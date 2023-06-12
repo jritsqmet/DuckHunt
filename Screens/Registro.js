@@ -1,4 +1,4 @@
-import { View, Text, Alert, Button } from 'react-native'
+import { View, Text, Alert, Button, Image, ImageBackground, StyleSheet, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import { FlatList, TextInput } from 'react-native-gesture-handler'
 
@@ -67,32 +67,43 @@ export default function Registro({ navigation }) {
   }
 
   return (
-    <View>
-      <Text>Registro</Text>
+    <View style={styles.container}>
+    <ImageBackground
+      source={require('../assets/images/Stage02.png')}
+      style={styles.fondo}
+    >
+      <Image
+        source={require("../assets/images/title.png")}
+        style={styles.imgT}
+      />
       <TextInput
         placeholder='Ingrese email'
         keyboardType='email-address'
         onChangeText={(text) => setcorreo(text)}
+        style={styles.inputLogin}
       />
       <TextInput
         placeholder='Ingrese un nick'
         onChangeText={(text) => setnick(text)}
+        style={styles.inputLogin}
       />
       <TextInput
         placeholder='Ingrese edad'
         onChangeText={(text) => setedad(text)}
         keyboardType='numeric'
+        style={styles.inputLogin}
+
       />
 
       <TextInput
         placeholder='Ingrese contraseña'
         onChangeText={(text) => setpass(text)}
+        style={styles.inputLogin}
       />
 
-      <Button
-        title='Registrar'
-        onPress={() => registrar()}
-      />
+<TouchableOpacity style={styles.btn} onPress={() => registrar()}>
+          <Text style={styles.txt}>Registrar</Text>
+        </TouchableOpacity>
 
       <Button
         title='Leer'
@@ -113,6 +124,53 @@ export default function Registro({ navigation }) {
           </View>
         }
       />
+   </ImageBackground>
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+
+  },
+  fondo: {
+    flex: 1,
+    resizeMode: 'cover',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  inputLogin: {
+    backgroundColor: 'transparent',
+    borderBottomColor: 'black',
+    borderBottomWidth: 1,
+    width: "80%",
+    height: 50,
+    alignSelf: 'center',
+    textAlign: 'center',
+    fontSize: 20
+
+  },
+  btn: {
+    width: '80%',
+    backgroundColor: "#f52c28",
+    alignItems: 'center',
+    alignSelf: 'center',
+    marginTop: 20,
+    height: 35,
+    borderRadius: 30,
+    justifyContent: 'center'
+
+  },
+  txt: {
+    color: 'white',
+    fontSize: 22,
+    fontWeight: 'bold'
+  },
+  imgT: {
+    height: 70,
+    width: "90%",
+    alignSelf: 'center',
+    top: "-10%"
+  },
+})
