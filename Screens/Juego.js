@@ -3,11 +3,17 @@ import React, { useState, useEffect } from 'react'
 
 import { getAuth, signOut } from "firebase/auth";
 import { initializeApp } from 'firebase/app';
-import { firebaseConfig } from '../Components/Config';
+import { firebaseConfig, db } from '../Components/Config';
 
 import Pato from '../Components/Pato';
 
-export default function Juego({ navigation }) {
+///////////
+import { ref, set } from "firebase/database";
+/////////////////
+
+export default function Juego({ navigation, route }) {
+
+  const { nick } = route.params;
 
   const [tiempo, settiempo] = useState(10)
 
@@ -32,14 +38,25 @@ export default function Juego({ navigation }) {
 
   useEffect(() => {
     if (tiempo == 0) {
-      Alert.alert("GAME OVER", "Su puntuación es: ",)
+      Alert.alert("GAME OVER", "Su puntuación es: ")
       settiempo(10)
+      enviarP()
+
     }
 
   }, [tiempo])
   /////////////////////////////////////////////////////////////////////////
 
 
+  //FASE 3
+
+
+  function enviarP(){
+    set(ref(db, 'puntuación/' + nick), {
+      nick: nick,
+      puntuación: 34
+    });
+  }
 
 
   function logout() {

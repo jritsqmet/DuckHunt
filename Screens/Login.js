@@ -19,7 +19,7 @@ export default function Login( { navigation } ) {
                 // Signed in
                 const user = userCredential.user;
                 
-                navigation.navigate('Juego')
+                navigation.navigate('Juego', {nick: "juan34"})
 
             })
             .catch((error) => {
@@ -75,6 +75,7 @@ export default function Login( { navigation } ) {
                     onChangeText={(text) => setpass(text)}
                     value={pass}
                     style={styles.inputLogin }
+                    
             
                 />
 
