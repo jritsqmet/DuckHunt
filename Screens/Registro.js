@@ -46,6 +46,8 @@ export default function Registro({ navigation }) {
     });
   }
 
+
+
   function leer() {
     const starCountRef = ref(db, 'jugadores/');
     onValue(starCountRef, (snapshot) => {
@@ -63,7 +65,7 @@ export default function Registro({ navigation }) {
   }
 
   function eliminar(id){
-    remove(ref(set(db, 'jugadores/'+ id)))
+    remove(ref(db, 'jugadores/'+ id))
   }
 
   return (

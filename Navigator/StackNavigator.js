@@ -10,17 +10,18 @@ const Stack = createStackNavigator();
 function MyStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
-      <Stack.Screen name="Juego" component={Juego} options={{ headerShown: false }}/>
-      <Stack.Screen name="Registro" component={Registro} options={{ headerShown: false }}/>
+      <Stack.Screen name="Juego" component={Juego} options={{ headerShown: false }} />
+
+      <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+      <Stack.Screen name="Registro" component={Registro} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 }
 
-export default function StackNavigator(){
-    return(
-        <NavigationContainer>
-            <MyStack/>
-        </NavigationContainer>
-    )
+export default function StackNavigator() {
+  return (
+    <NavigationContainer>
+      <MyStack />
+    </NavigationContainer>
+  )
 }
